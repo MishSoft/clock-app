@@ -1,29 +1,29 @@
-// import React from 'react'
-
-// import { useState } from "react";
+import { DateTime } from "luxon";
 import Country from "./Country";
 import Currently from "./Currently";
+import { useEffect, useState } from "react";
+
+function getCountryAndCity(dateTime) {
+  const offsetNameLong = dateTime.offsetNameLong;
+
+  // Extract country and city from offsetNameLong
+  const [city, country] = offsetNameLong.split("/").map((part) => part.trim());
+
+  return { country, city };
+}
 
 function Time() {
-  // const [time, setTime] = useState(null)
-  // luxon
-  const date = new Date();
-  const localTime = date.getTime();
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const timeZone = date.getTimezoneOffset() * 60000;
+  const date = new Date()
 
-  const utc = localTime - timeZone;
-  const offset = 4;
-  const city = utc + 3600000 * offset;
-  console.log(city);
+  console.log(DateTime.fromJSDate())
 
+  // console.log("s");
   return (
     <div className="time-component">
       <Currently />
       <div className="time">
-        <h1>{`${hours}:${minutes}`}</h1>
-        <h3>BST</h3>
+        <h1></h1>
+        <h3></h3>
       </div>
       <Country />
     </div>
