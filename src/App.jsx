@@ -4,10 +4,15 @@ import Time from "./components/Time";
 
 function App() {
   return (
-    <div style={{ backgroundImage: `url(https://img.freepik.com/free-photo/night-view-victoria-harbor-hong-kong_53876-146261.jpg)`}} className="container">
-      <Quotes/>
+    <div
+      style={{
+        backgroundImage: `url(https://img.freepik.com/free-photo/night-view-victoria-harbor-hong-kong_53876-146261.jpg)`,
+      }}
+      className="container"
+    >
+      <Quotes />
       <div className="time-more">
-        <Time/>
+        <Time />
       </div>
     </div>
   );

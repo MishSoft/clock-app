@@ -63,7 +63,9 @@ body {
 
 .currently {
   color: #fff;
-
+  display: flex;
+  align-items: center;
+  gap: 20px;
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
@@ -71,6 +73,10 @@ body {
   line-height: 28px; /* 140% */
   letter-spacing: 4px;
   text-transform: uppercase;
+}
+
+.currently .material-icon {
+  text-transform: lowercase;
 }
 
 .time {

@@ -1,7 +1,7 @@
 // import React from 'react'
 
-function Country({ country, city }) {
-  return <div className="country">{`In ${country} ${city}`}</div>;
+function Country({ city, country }) {
+  return <div className="country">{`In ${city} ${country}`}</div>;
 }
 
 export default Country;
