@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { useState, useEffect } from "react";
 import { DateTime } from "luxon";
 import Information from "./components/Information";
@@ -22,7 +21,9 @@ function App() {
     setIcon(!icon);
     setInfo(!info);
   };
-
+  console.log(
+    `https://api.unsplash.com/photos?query=${city}${weatherData}&client_id=${myImagesApi}`
+  );
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -46,11 +47,16 @@ function App() {
             const weatherQuery = isDaytime ? "day" : "night";
             // Fetch Unsplash photo based on daytime or nighttime
             fetch(
-              `https://api.unsplash.com/photos/random?client_id=${myImagesApi}&query=${weatherQuery} ${weatherData}`
+              `https://api.unsplash.com/photos/random?client_id=${myImagesApi}&query=tbilisi`
             )
               .then((response) => response.json())
               .then((photoData) => {
-                setWeatherBackground(photoData.urls.full);
+                setWeatherBackground(
+                  photoData[Math.floor(Math.random() * photoData.length)]
+                );
+                console.log(
+                  photoData[Math.floor(Math.random() * photoData.length)]
+                );
               })
               .catch((photoError) => {
                 console.error("Error fetching Unsplash photo:", photoError);
@@ -64,7 +70,7 @@ function App() {
         console.error("Error getting geolocation:", geolocationError);
       }
     );
-  }, [myAPI, myImagesApi]);
+  }, [city, myAPI, myImagesApi, weatherData]);
   return (
     <div
       style={{

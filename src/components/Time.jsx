@@ -3,7 +3,10 @@ import Country from "./Country";
 import Currently from "./Currently";
 
 function Time({ timeDate, weatherData, city, weatherIcon, country }) {
-  const hours = timeDate.getHours();
+  const hours =
+    timeDate.getHours() < 10 && timeDate.getHours() >= 0
+      ? `0${timeDate.getHours()}`
+      : timeDate.getHours();
   const minutes =
     timeDate.getMinutes() < 10 && timeDate.getMinutes() > 0
       ? `0${timeDate.getMinutes()}`
