@@ -27,11 +27,8 @@ body {
   color: #fff;
   padding: 15px 40px;
   font-size: 18px;
-  font-style: normal;
   font-weight: 400;
   line-height: 28px;
-  font-style: italic;
-
   display: flex;
   align-items: center;
   gap: 20px;
@@ -51,7 +48,6 @@ body {
 
 .return-button:hover {
   background-color: rgb(98, 235, 150);
-  /* border-color: white; */
   color: tomato;
 }
 
@@ -61,7 +57,6 @@ body {
   justify-content: space-between;
   padding-right: 40px;
   padding-top: 40px;
-  /* border: 1px solid red; */
 }
 
 .time-component {
@@ -75,9 +70,7 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  font-family: Inter;
   font-size: 20px;
-  font-style: normal;
   font-weight: 400;
   line-height: 28px; /* 140% */
   letter-spacing: 4px;
@@ -95,10 +88,7 @@ body {
 
 .time h1 {
   color: #fff;
-
-  font-family: Inter;
   font-size: 200px;
-  font-style: normal;
   font-weight: 700;
   line-height: 200px; /* 100% */
   letter-spacing: -5px;
@@ -106,10 +96,7 @@ body {
 
 .time h3 {
   color: #fff;
-
-  font-family: Inter;
   font-size: 40px;
-  font-style: normal;
   font-weight: 300;
   line-height: 28px; /* 70% */
   text-transform: uppercase;
@@ -117,10 +104,7 @@ body {
 
 .country {
   color: #fff;
-
-  font-family: Inter;
   font-size: 24px;
-  font-style: normal;
   font-weight: 700;
   line-height: 28px; /* 116.667% */
   letter-spacing: 4.8px;
@@ -136,10 +120,7 @@ body {
   gap: 13px;
 
   color: #000;
-
-  font-family: Inter;
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
   line-height: 28px; /* 175% */
   letter-spacing: 5px;
@@ -174,12 +155,8 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 50px;
-
   color: #303030;
-
-  font-family: Inter;
   font-size: 15px;
-  font-style: normal;
   font-weight: 400;
   line-height: 28px; /* 186.667% */
   letter-spacing: 3px;
@@ -192,11 +169,8 @@ body {
 .left-side h2,
 .right-side h2 {
   color: #303030;
-  font-family: Inter;
   font-size: 56px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
 }
 
 .time-zone {

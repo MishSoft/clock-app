@@ -12,9 +12,6 @@ function Time({ timeDate, weatherData, city, weatherIcon, country }) {
       ? `0${timeDate.getMinutes()}`
       : timeDate.getMinutes();
 
-  const timeZoneAbbreviation = Intl.DateTimeFormat().resolvedOptions();
-  const timeZone = `${timeZoneAbbreviation}`;
-  console.log(timeDate.toGMTString())
   return (
     <div className="time-component">
       <Currently

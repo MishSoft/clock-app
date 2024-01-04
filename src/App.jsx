@@ -4,6 +4,8 @@ import Information from "./components/Information";
 import MoreInfo from "./components/MoreInfo";
 import Quotes from "./components/Quotes";
 import Time from "./components/Time";
+// import dotenv from "dotenv";
+// require("dotenv").config();
 
 function App() {
   const [icon, setIcon] = useState(true);
