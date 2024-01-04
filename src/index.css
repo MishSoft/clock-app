@@ -61,6 +61,7 @@ body {
   justify-content: space-between;
   padding-right: 40px;
   padding-top: 40px;
+  /* border: 1px solid red; */
 }
 
 .time-component {
@@ -206,4 +207,36 @@ body {
 
 .information-component-active {
   display: flex;
+}
+
+@media (max-width: 1072px) {
+  .information-component {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .left-side {
+    border-right: none;
+    align-items: center;
+    border-bottom: 1px solid silver;
+  }
+}
+
+
+@media screen and (max-width: 1042px) {
+  .time-more {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px;
+    padding-bottom: 20px;
+  }
+
+  .time-component {
+    padding: 20px 0;
+  }
+
+  .time h1 {
+    font-size: 100px;
+  }
 }

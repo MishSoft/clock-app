@@ -8,10 +8,13 @@ function Time({ timeDate, weatherData, city, weatherIcon, country }) {
       ? `0${timeDate.getHours()}`
       : timeDate.getHours();
   const minutes =
-    timeDate.getMinutes() < 10 && timeDate.getMinutes() > 0
+    timeDate.getMinutes() < 10 && timeDate.getMinutes() >= 0
       ? `0${timeDate.getMinutes()}`
       : timeDate.getMinutes();
 
+  const timeZoneAbbreviation = Intl.DateTimeFormat().resolvedOptions();
+  const timeZone = `${timeZoneAbbreviation}`;
+  console.log(timeDate.toGMTString())
   return (
     <div className="time-component">
       <Currently
@@ -20,7 +23,7 @@ function Time({ timeDate, weatherData, city, weatherIcon, country }) {
       />
       <div className="time">
         <h1>{`${hours}:${minutes}`}</h1>
-        <h3>S</h3>
+        {/* <h3>{timeZone}</h3> */}
       </div>
       <Country city={city} country={country} />
     </div>

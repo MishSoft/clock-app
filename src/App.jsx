@@ -16,19 +16,27 @@ function App() {
   const myAPI = "aa51d208b4364cac9fc0df711a6bf551";
   const myImagesApi = "FbLo17vm475-yo9haBrEdRAC-5KMuitsw6MrTgCweDY";
   const date = new Date();
-
   const handleSubmitInformation = () => {
     setIcon(!icon);
     setInfo(!info);
   };
-  console.log(
-    `https://api.unsplash.com/photos?query=${city}${weatherData}&client_id=${myImagesApi}`
-  );
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const userLatitude = position.coords.latitude;
         const userLongitude = position.coords.longitude;
+
+        const currentHour = DateTime.local().hour;
+        let weatherQuery;
+
+        if (currentHour >= 6 && currentHour < 12) {
+          weatherQuery = "morning";
+        } else if (currentHour >= 12 && currentHour < 18) {
+          weatherQuery = "afternoon";
+        } else {
+          weatherQuery = "evening";
+        }
 
         // Fetch weather data
         fetch(
@@ -41,21 +49,23 @@ function App() {
             setCountry(data.data[0].country_code);
             setWeatherIcon(data.data[0].weather.code);
 
-            // Determine if it's currently daytime
-            const isDaytime =
-              DateTime.local().hour >= 6 && DateTime.local().hour < 18;
-            const weatherQuery = isDaytime ? "day" : "night";
-            // Fetch Unsplash photo based on daytime or nighttime
+            // Fetch Unsplash photo based on morning, afternoon, or evening
             fetch(
-              `https://api.unsplash.com/photos/random?client_id=${myImagesApi}&query=tbilisi`
+              `https://api.unsplash.com/search/photos?query=${
+                (weatherData, weatherQuery)
+              }`,
+              {
+                headers: {
+                  Authorization: `Client-ID ${myImagesApi}`,
+                },
+              }
             )
               .then((response) => response.json())
               .then((photoData) => {
                 setWeatherBackground(
-                  photoData[Math.floor(Math.random() * photoData.length)]
-                );
-                console.log(
-                  photoData[Math.floor(Math.random() * photoData.length)]
+                  photoData.results[
+                    Math.floor(Math.random() * photoData.results.length)
+                  ].urls.full
                 );
               })
               .catch((photoError) => {
