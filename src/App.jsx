@@ -15,8 +15,8 @@ function App() {
   const [country, setCountry] = useState(null);
   const [weatherIcon, setWeatherIcon] = useState(null);
   const [weatherBackground, setWeatherBackground] = useState("");
-  const myAPI = "aa51d208b4364cac9fc0df711a6bf551";
-  const myImagesApi = "FbLo17vm475-yo9haBrEdRAC-5KMuitsw6MrTgCweDY";
+  const myAPI = "057d72dd8be2f8441d0690bbafecd860";
+  const myImagesApi = "muv_4qsWtM73C9IajHzMwCs-QWn_8UYXQ9ihBmjxm3U";
   const date = new Date();
   const handleSubmitInformation = () => {
     setIcon(!icon);
@@ -42,20 +42,18 @@ function App() {
 
         // Fetch weather data
         fetch(
-          `https://api.weatherbit.io/v2.0/current?lat=${userLatitude}&lon=${userLongitude}&key=${myAPI}`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${userLatitude}&lon=${userLongitude}&appid=${myAPI}`
         )
           .then((response) => response.json())
           .then((data) => {
-            setWeatherData(data.data[0].weather.description);
-            setCity(data.data[0].city_name);
-            setCountry(data.data[0].country_code);
-            setWeatherIcon(data.data[0].weather.code);
+            setWeatherData(data.weather[0].description);
+            setCity(data.name);
+            setCountry(data.code);
+            setWeatherIcon(data.weather[0].icon);
 
             // Fetch Unsplash photo based on morning, afternoon, or evening
             fetch(
-              `https://api.unsplash.com/search/photos?query=${
-                (weatherData, weatherQuery)
-              }`,
+              `https://api.unsplash.com/search/photos?query=${weatherQuery}`,
               {
                 headers: {
                   Authorization: `Client-ID ${myImagesApi}`,
@@ -64,6 +62,7 @@ function App() {
             )
               .then((response) => response.json())
               .then((photoData) => {
+                console.log(photoData);
                 setWeatherBackground(
                   photoData.results[
                     Math.floor(Math.random() * photoData.results.length)

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { GiReturnArrow } from "react-icons/gi";
 
-// import { Axios } from "axios";
 function Quotes() {
   const [quote, setQuote] = useState("");
 
@@ -37,12 +36,12 @@ function Quotes() {
 
   // Render the quote in the UI
   return (
-    <div className="jokes">
+    <blockquote className="jokes">
       {`'${quote || "Loading..."}'`}
       <span onClick={caughtQuote} className="return-button">
         <GiReturnArrow />
       </span>
-    </div>
+    </blockquote>
   );
 }
 
