@@ -16,3 +16,5 @@
 
 .prettierignore
 node_modules
+/src/components/envIgnore.js
+/components/envIgnore.js

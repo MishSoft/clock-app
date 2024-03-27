@@ -5,9 +5,8 @@ import MoreInfo from "./components/MoreInfo";
 import Quotes from "./components/Quotes";
 import Time from "./components/Time";
 import { ToastContainer, toast } from "react-toastify";
+import { myAPI, myImagesApi } from "./components/envIgnore";
 import "react-toastify/dist/ReactToastify.css";
-// import dotenv from "dotenv";
-// require("dotenv").config();
 
 function App() {
   const [icon, setIcon] = useState(true);
@@ -17,8 +16,6 @@ function App() {
   const [country, setCountry] = useState(null);
   const [weatherIcon, setWeatherIcon] = useState(null);
   const [weatherBackground, setWeatherBackground] = useState("");
-  const myAPI = "057d72dd8be2f8441d0690bbafecd860";
-  const myImagesApi = "muv_4qsWtM73C9IajHzMwCs-QWn_8UYXQ9ihBmjxm3U";
   const date = new Date();
   const handleSubmitInformation = () => {
     setIcon(!icon);
