@@ -14,7 +14,8 @@
 # Avoid your project being littered with annoying .DS_Store files!
 .DS_Store
 
+# Ignore Prettier's ignore file and node_modules directory
 .prettierignore
 node_modules
-/src/components/envIgnore.js
-/components/envIgnore.js
+
+

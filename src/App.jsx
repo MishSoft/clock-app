@@ -5,7 +5,6 @@ import MoreInfo from "./components/MoreInfo";
 import Quotes from "./components/Quotes";
 import Time from "./components/Time";
 import { ToastContainer, toast } from "react-toastify";
-import { myAPI, myImagesApi } from "./components/envIgnore";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -21,7 +20,8 @@ function App() {
     setIcon(!icon);
     setInfo(!info);
   };
-
+  const myAPI = "057d72dd8be2f8441d0690bbafecd860";
+  const myImagesApi = "muv_4qsWtM73C9IajHzMwCs-QWn_8UYXQ9ihBmjxm3U";
   const notify = () =>
     toast.info("The app uses limited APIs, which may cause the app to crash.", {
       position: "top-right",
