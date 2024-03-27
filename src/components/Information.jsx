@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 function Information({ info, timeDate }) {
   const timezone = timeDate.local().zoneName;
   const dayYear = timeDate.local().daysInYear;
@@ -5,10 +7,12 @@ function Information({ info, timeDate }) {
   const weekNumber = timeDate.local().localWeekNumber;
 
   return (
-    <div
-      className={`information-component ${
-        info ? "information-component-active" : ""
-      }`}
+    <motion.div
+      animate={{
+        y: info ? 0 : 500,
+      }}
+      className="information-component"
+      style={{ display: info ? "flex" : "none" }}
     >
       <div className="left-side">
         <div className="time-zone">
@@ -30,7 +34,7 @@ function Information({ info, timeDate }) {
           <h2>{weekNumber}</h2>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

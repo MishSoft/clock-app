@@ -1,6 +1,8 @@
 // import { useEffect, useState } from "react";
 import Country from "./Country";
 import Currently from "./Currently";
+import { motion } from "framer-motion";
+
 
 function Time({ timeDate, weatherData, city, weatherIcon, country }) {
   const hours =
@@ -13,17 +15,16 @@ function Time({ timeDate, weatherData, city, weatherIcon, country }) {
       : timeDate.getMinutes();
 
   return (
-    <div className="time-component">
+    <motion.div className="time-component">
       <Currently
         iconNumber={weatherIcon}
         currentlyData={weatherData && `${weatherData}, It's currently`}
       />
       <div className="time">
         <h1>{`${hours}:${minutes}`}</h1>
-        {/* <h3>{timeZone}</h3> */}
       </div>
       <Country city={city} country={country} />
-    </div>
+    </motion.div>
   );
 }
 

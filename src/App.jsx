@@ -4,6 +4,8 @@ import Information from "./components/Information";
 import MoreInfo from "./components/MoreInfo";
 import Quotes from "./components/Quotes";
 import Time from "./components/Time";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import dotenv from "dotenv";
 // require("dotenv").config();
 
@@ -22,6 +24,22 @@ function App() {
     setIcon(!icon);
     setInfo(!info);
   };
+
+  const notify = () =>
+    toast.info("The app uses limited APIs, which may cause the app to crash.", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  useEffect(() => {
+    notify();
+  }, []);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -48,7 +66,7 @@ function App() {
           .then((data) => {
             setWeatherData(data.weather[0].description);
             setCity(data.name);
-            setCountry(data.code);
+            setCountry(data.sys.country);
             setWeatherIcon(data.weather[0].icon);
 
             // Fetch Unsplash photo based on morning, afternoon, or evening
@@ -62,7 +80,6 @@ function App() {
             )
               .then((response) => response.json())
               .then((photoData) => {
-                console.log(photoData);
                 setWeatherBackground(
                   photoData.results[
                     Math.floor(Math.random() * photoData.results.length)
@@ -89,6 +106,14 @@ function App() {
       }}
       className="container"
     >
+      <div style={{ position: "absolute" }}>
+        <ToastContainer
+          position="top-center"
+          reverseOrder={false}
+          gutter={8}
+          containerClassName=""
+        />
+      </div>
       <Quotes />
       <div className="footer">
         <div className="time-more">
